@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics Dashboard - PulsePoint</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span>🩺</span> PulsePoint
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="survey.html">Take Survey</a></li>
+        <li><a href="dashboard.html" class="active">View Results</a></li>
+        <li><a href="about.html">About Project</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Dashboard Content -->
+  <main class="container" style="padding-top: 2rem; padding-bottom: 3.5rem;">
+    
+    <!-- Top Header Bar with Action Controls -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+      <div>
+        <span class="badge">Live Community Stats</span>
+        <h1 style="font-size: 1.8rem; color: #0f172a;">Health Analytics Dashboard</h1>
+        <p style="color: #64748b; font-size: 0.95rem;">
+          Real responses stored exclusively in your browser's <code>localStorage</code>.
+        </p>
+      </div>
+
+      <!-- Control Buttons -->
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <button id="btnClearData" class="btn btn-danger btn-sm" title="Reset localStorage data">
+          Reset All Data
+        </button>
+        <a href="survey.html" class="btn btn-primary btn-sm">
+          + Submit New Survey
+        </a>
+      </div>
+    </div>
+
+    <!-- 1. YOUR PERSONAL SUBMISSION RESULT (SHOWN ALONE) -->
+    <section id="myPersonalResultContainer">
+      <!-- Injected dynamically by dashboard.js from localStorage -->
+    </section>
+
+    <!-- 2. COMMUNITY SUMMARY HEADER -->
+    <div style="margin: 2.5rem 0 1rem; border-top: 1px solid #e2e8f0; padding-top: 1.5rem;">
+      <h2 style="font-size: 1.35rem; color: #0f172a; margin-bottom: 0.25rem;">
+        📊 Aggregated Community Insights
+      </h2>
+      <p style="color: #64748b; font-size: 0.9rem;">
+        Overall health trends calculated from all local submissions.
+      </p>
+    </div>
+
+    <!-- 4 High-Level Summary Cards -->
+    <section class="kpi-row">
+      <div class="kpi-card">
+        <h4>Total Responses</h4>
+        <div class="kpi-number" id="kpiTotal">0</div>
+        <div style="font-size: 0.75rem; color: #94a3b8;">Real submissions</div>
+      </div>
+
+      <div class="kpi-card">
+        <h4>Average Sleep</h4>
+        <div class="kpi-number" id="kpiSleep">--</div>
+        <div style="font-size: 0.75rem; color: #94a3b8;">Most common answer</div>
+      </div>
+
+      <div class="kpi-card">
+        <h4>Campus Stress</h4>
+        <div class="kpi-number" id="kpiStress">--</div>
+        <div style="font-size: 0.75rem; color: #94a3b8;">Dominant level reported</div>
+      </div>
+
+      <div class="kpi-card">
+        <h4>Hydration Goal</h4>
+        <div class="kpi-number" id="kpiHydration">0%</div>
+        <div style="font-size: 0.75rem; color: #94a3b8;">Drinking 2L+ per day</div>
+      </div>
+    </section>
+
+    <!-- Visual Charts Grid (Using Clean, Simple CSS Bar Charts) -->
+    <section class="grid-2">
+      
+      <!-- Chart 1: Sleep Duration -->
+      <div class="chart-box">
+        <h3 style="margin-bottom: 0.25rem;">😴 Nightly Sleep Hours</h3>
+        <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 1.25rem;">Distribution of student rest duration</p>
+
+        <!-- Bar: Under 5 hrs -->
+        <div class="bar-row">
+          <div class="bar-labels">
+            <span>Under 5 hours</span>
+            <span id="pctSleepUnder5">0%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill bar-orange" id="barSleepUnder5" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Bar: 5-6 hrs -->
+        <div class="bar-row">
+          <div class="bar-labels">
+            <span>5 to 6 hours</span>
+            <span id="pctSleep5to6">0%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill bar-blue" id="barSleep5to6" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Bar: 7-8 hrs -->
+        <div class="bar-row">
+          <div class="bar-labels">
+            <span>7 to 8 hours (Optimal)</span>
+            <span id="pctSleep7to8">0%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill bar-teal" id="barSleep7to8" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Bar: 9+ hrs -->
+        <div class="bar-row">
+          <div class="bar-labels">
+            <span>9+ hours</span>
+            <span id="pctSleep9plus">0%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill bar-teal" id="barSleep9plus" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 2: Stress Levels -->
+      <div class="chart-box">
+        <h3 style="margin-bottom: 0.25rem;">🧠 Academic Stress Levels</h3>
+        <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 1.25rem;">Workload pressure reported by students</p>
+
+        <!-- Bar: Low -->
+        <div class="bar-row">
+          <div class="bar-labels">
+            <span>Low Stress</span>
+            <span id="pctStressLow">0%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill bar-teal" id="barStressLow" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Bar: Moderate -->
+        <div class="bar-row">
+          <div class="bar-labels">
+            <span>Moderate Stress</span>
+            <span id="pctStressMod">0%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill bar-orange" id="barStressMod" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Bar: High -->
+        <div class="bar-row">
+          <div class="bar-labels">
+            <span>High / Overwhelmed</span>
+            <span id="pctStressHigh">0%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill bar-red" id="barStressHigh" style="width: 0%;"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Chart 3: Water Intake -->
+    <section class="chart-box">
+      <h3 style="margin-bottom: 0.25rem;">💧 Daily Water Consumption</h3>
+      <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 1.25rem;">Hydration habits across participants</p>
+
+      <div class="bar-row">
+        <div class="bar-labels">
+          <span>Less than 1 Liter (Dehydrated)</span>
+          <span id="pctWaterLess1L">0%</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill bar-red" id="barWaterLess1L" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="bar-row">
+        <div class="bar-labels">
+          <span>1 to 2 Liters (Moderate)</span>
+          <span id="pctWater1to2L">0%</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill bar-blue" id="barWater1to2L" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="bar-row">
+        <div class="bar-labels">
+          <span>2 Liters or more (Recommended Goal)</span>
+          <span id="pctWater2LPlus">0%</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill bar-teal" id="barWater2LPlus" style="width: 0%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Submissions Table -->
+    <section class="card" style="margin-top: 2rem;">
+      <h3 style="margin-bottom: 0.25rem;">📋 Real Submissions Log</h3>
+      <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 1rem;">
+        Stored in browser <code>localStorage</code> with anonymous ID tags.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Sleep</th>
+              <th>Water</th>
+              <th>Stress</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="responsesTableBody">
+            <!-- Dynamically populated via dashboard.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 PulsePoint - First Year Computer Science Project.</p>
+    </div>
+  </footer>
+
+  <!-- Dashboard JavaScript -->
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

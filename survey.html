@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Take Health Survey - PulsePoint</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span>🩺</span> PulsePoint
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="survey.html" class="active">Take Survey</a></li>
+        <li><a href="dashboard.html">View Results</a></li>
+        <li><a href="about.html">About Project</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Survey Form Section -->
+  <main class="container">
+    <div class="survey-box">
+      
+      <span class="badge">Anonymous Student Survey</span>
+      <h1 style="font-size: 1.8rem; margin: 0.5rem 0 0.25rem;">Campus Wellness Survey</h1>
+      <p style="color: #64748b; font-size: 0.95rem;">
+        Please answer all 4 simple questions below. Your answers help build our live campus health charts.
+      </p>
+
+      <!-- Live Progress Bar -->
+      <div style="margin-top: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; color: #475569;">
+          <span>Survey Progress</span>
+          <span id="progressText">0% Completed (0 of 4 answered)</span>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar" id="formProgressBar"></div>
+        </div>
+      </div>
+
+      <!-- Real HTML Form -->
+      <form id="healthSurveyForm">
+        
+        <!-- QUESTION 1: SLEEP -->
+        <div class="form-group">
+          <label class="question-title">1. On average, how many hours of sleep do you get each night?</label>
+          <label class="option-label">
+            <input type="radio" name="sleep" value="Under 5 hrs" required>
+            Under 5 hours (Not enough rest)
+          </label>
+          <label class="option-label">
+            <input type="radio" name="sleep" value="5-6 hrs">
+            5 to 6 hours (Slight deficit)
+          </label>
+          <label class="option-label">
+            <input type="radio" name="sleep" value="7-8 hrs">
+            7 to 8 hours (Healthy & Recommended)
+          </label>
+          <label class="option-label">
+            <input type="radio" name="sleep" value="9+ hrs">
+            9+ hours (Well-rested)
+          </label>
+        </div>
+
+        <!-- QUESTION 2: SCREEN TIME -->
+        <div class="form-group">
+          <label class="question-title">2. Do you actively use your smartphone or laptop in bed right before sleeping?</label>
+          <label class="option-label">
+            <input type="radio" name="screen" value="Yes" required>
+            Yes, usually for 30+ minutes
+          </label>
+          <label class="option-label">
+            <input type="radio" name="screen" value="No">
+            No, I put my devices away
+          </label>
+        </div>
+
+        <!-- QUESTION 3: WATER INTAKE -->
+        <div class="form-group">
+          <label class="question-title">3. Approximately how much water do you drink each day?</label>
+          <label class="option-label">
+            <input type="radio" name="water" value="Less than 1L" required>
+            Less than 1 Liter (1 to 3 glasses)
+          </label>
+          <label class="option-label">
+            <input type="radio" name="water" value="1-2 Liters">
+            1 to 2 Liters (4 to 6 glasses)
+          </label>
+          <label class="option-label">
+            <input type="radio" name="water" value="2L or more">
+            2 Liters or more (Healthy daily target)
+          </label>
+        </div>
+
+        <!-- QUESTION 4: STRESS LEVEL -->
+        <div class="form-group">
+          <label class="question-title">4. How would you rate your college & academic stress right now?</label>
+          <label class="option-label">
+            <input type="radio" name="stress" value="Low" required>
+            Low (Calm & in control)
+          </label>
+          <label class="option-label">
+            <input type="radio" name="stress" value="Moderate">
+            Moderate (Manageable workload)
+          </label>
+          <label class="option-label">
+            <input type="radio" name="stress" value="High">
+            High (Feeling overwhelmed with exams/assignments)
+          </label>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <div style="margin-top: 2rem;">
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1.05rem;">
+            Submit Anonymous Response &rarr;
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 PulsePoint - First Year Computer Science Project.</p>
+    </div>
+  </footer>
+
+  <!-- Survey JavaScript -->
+  <script src="js/survey.js"></script>
+</body>
+</html>

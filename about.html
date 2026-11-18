@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Project - PulsePoint</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span>🩺</span> PulsePoint
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="survey.html">Take Survey</a></li>
+        <li><a href="dashboard.html">View Results</a></li>
+        <li><a href="about.html" class="active">About Project</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- About Content -->
+  <main class="container" style="max-width: 800px; padding-top: 2.5rem; padding-bottom: 4rem;">
+    
+    <span class="badge">Academic Project</span>
+    <h1 style="font-size: 2rem; margin: 0.5rem 0 1rem; color: #0f172a;">About PulsePoint</h1>
+    <p style="color: #475569; font-size: 1.05rem; line-height: 1.6; margin-bottom: 2rem;">
+      PulsePoint is a student-focused public health survey web prototype designed for a first-year college computer science assignment. It enables anonymous data collection on sleep, hydration, and academic stress, then visualizes community trends in real-time.
+    </p>
+
+    <!-- Student & Project Details Card -->
+    <div class="card" style="margin-bottom: 2rem;">
+      <h3 style="margin-bottom: 1rem; color: #0d9488;">Project Information</h3>
+      <table style="width: 100%;">
+        <tr>
+          <td style="font-weight: 600; width: 35%;">Project Name:</td>
+          <td>PulsePoint (Public Health Survey Platform)</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 600;">Technology:</td>
+          <td>HTML5, CSS3, Vanilla JavaScript (No external frameworks)</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 600;">Data Storage:</td>
+          <td>Browser <code>window.localStorage</code></td>
+        </tr>
+        <tr>
+          <td style="font-weight: 600;">Visualization:</td>
+          <td>Dynamic CSS Bar Charts (Responsive & Lightweight)</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 600;">Project Scope:</td>
+          <td>Non-clinical educational demonstration</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- How the Project Works (For Viva) -->
+    <div class="card" style="margin-bottom: 2rem;">
+      <h3 style="margin-bottom: 1rem;">How the System Works (Viva Explanation)</h3>
+      <ol style="padding-left: 1.25rem; color: #475569; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.95rem;">
+        <li>
+          <strong>The Survey Form (<code>survey.html</code>):</strong> Uses standard HTML radio inputs with a progress bar that recalculates whenever an option is selected.
+        </li>
+        <li>
+          <strong>Validation & Storage (<code>survey.js</code>):</strong> When submitted, it prevents page reload with <code>event.preventDefault()</code>, checks that all questions are answered, and stores the response in <code>localStorage</code> as a JSON string.
+        </li>
+        <li>
+          <strong>Personal Results Alone (<code>dashboard.html</code>):</strong> Reads <code>pulsepoint_my_last_submission</code> and presents your individual answers and customized health insights in a dedicated top profile card.
+        </li>
+        <li>
+          <strong>Analytics Engine (<code>dashboard.js</code>):</strong> Reads all responses from <code>pulsepoint_simple_data</code>, calculates totals and percentages, updates summary cards, and dynamically animates the CSS bar charts by adjusting their <code>style.width</code>.
+        </li>
+      </ol>
+    </div>
+
+    <!-- Privacy Commitment -->
+    <div class="card" style="background-color: #f8fafc; border-left: 4px solid #0d9488;">
+      <h3 style="margin-bottom: 0.5rem;">Privacy &amp; Ethics Notice</h3>
+      <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5;">
+        This prototype strictly enforces participant anonymity. No names, student roll numbers, email addresses, or IP addresses are recorded. All survey data stays on your personal device inside your browser's local storage.
+      </p>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 PulsePoint - First Year Computer Science Project.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

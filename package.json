@@ -1,0 +1,19 @@
+{
+  "name": "pulsepoint",
+  "version": "1.0.0",
+  "description": "PulsePoint - Campus Public Health Survey Platform",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "vanilla-javascript",
+    "survey",
+    "public-health"
+  ],
+  "author": "Arzoo Kapoor",
+  "license": "ISC"
+}
